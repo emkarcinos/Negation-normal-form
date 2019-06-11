@@ -18,3 +18,6 @@ bool isPredicate(const std::string& formula, const unsigned int& pos);
 
 /* Returns an index of the predecesor of an operator from a given formula */
 unsigned int findPredecessor(const std::string& formula, const unsigned int& pos);
+
+/* Returns an index of the successor of an operator from a given formula */
+unsigned int findSuccessor(const std::string& formula, const unsigned int& pos);
