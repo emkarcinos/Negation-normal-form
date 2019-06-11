@@ -26,4 +26,4 @@ unsigned int findPredecessor(const std::string& formula, const unsigned int& pos
 unsigned int findSuccessor(const std::string& formula, const unsigned int& pos);
 
 /* Returns an index of the first encountered reduntant operator (implication or equality). Returns -1 if it wasn't found. */
-int findReduntantOperator(const std::string& formula, const unsigned int& pos);
+int findReduntantOperator(const std::string& formula, const unsigned int& pos=0);
