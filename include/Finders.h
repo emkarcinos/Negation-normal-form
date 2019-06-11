@@ -5,7 +5,7 @@
 #include <string>
 
 /* Returns an index of the first negation occurrence from a formula, with a given start position. Returns -1 if it wasn't found.*/
-int findNearestNegation(const std::string& formula, const unsigned int& startPos);
+int findNearestNegation(const std::string& formula, const unsigned int& startPos=0);
 
 /* Returns an index of the bracket's completor, i.e where the braket closes/opens. Returns -1 if it wasn't found.*/
 int findBracketCompletion(const std::string& formula, const unsigned int& pos);
