@@ -1,4 +1,4 @@
-TARGET := CuTerm_sample
+TARGET := negation-normal-form
 
 BUILD_DIR := bin
 SRC_DIR := src
