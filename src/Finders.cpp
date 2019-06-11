@@ -35,7 +35,9 @@ int findBracketCompletion(const std::string& formula, const unsigned int& pos){
 }
 
 bool isBeforeBracketOrQuantifier(const std::string& formula, const unsigned int& pos){
-
+    if(formula[pos+1]==Q_EXIST || formula[pos+1]==Q_UNI || formula[pos+1]==P_OPEN)
+        return true;
+    return false;
 }
 
 bool isPredicate(const std::string& formula, const unsigned int& pos){
