@@ -40,14 +40,27 @@ bool isBeforeBracketOrQuantifier(const std::string& formula, const unsigned int&
     return false;
 }
 
-bool isPredicate(const std::string& formula, const unsigned int& pos){
+bool isalpha_quantifiers(const char& ch){
+    if(ch==Q_EXIST || ch==Q_UNI || ch==OR)
+        return false;
+    else
+        return isalpha(ch);
+}
 
+bool isPredicate(const std::string& formula, const unsigned int& pos){
+    return isalpha_quantifiers(formula[pos+1]);
 }
 
 unsigned int findPredecessor(const std::string& formula, const unsigned int& pos){
-
+    unsigned int result=-1;
+    if(formula[pos-1]==P_CLOSE) {
+        result = findBracketCompletion(formula, pos-1);
+        if(result>0 && isalpha_quantifiers(formula[result-1]))
+            return result-1;
+    }
+    return result;
 }
 
 unsigned int findSuccessor(const std::string& formula, const unsigned int& pos){
-
+    return pos+1;
 }

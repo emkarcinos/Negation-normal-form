@@ -10,6 +10,9 @@ int findNearestNegation(const std::string& formula, const unsigned int& startPos
 /* Returns an index of the bracket's completor, i.e where the braket closes/opens. */
 int findBracketCompletion(const std::string& formula, const unsigned int& pos);
 
+/* Same as isalpha() but quantifiers are not considered an alphanumerical letter */
+bool isalpha_quantifiers(const char& ch);
+
 /* Cheks whether the next character after given position in a formula is a bracket or a quantifier */
 bool isBeforeBracketOrQuantifier(const std::string& formula, const unsigned int& pos);
 
