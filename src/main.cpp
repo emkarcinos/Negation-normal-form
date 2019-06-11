@@ -4,8 +4,8 @@
 #include <iostream>
 
 int main(){
-    std::string line="beginREend";
-    std::cout << replaceSlice(line,5,6,"ASDASDASDA") << std::endl;
+    std::string line="!E((pv(q^p))>!r)";
+    std::cout << findNearestNegation(line) << std::endl;
     std::cin.get();
     return 0;
 }
