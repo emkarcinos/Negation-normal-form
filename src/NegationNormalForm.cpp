@@ -1,0 +1,1 @@
+#include "NegationNormalForm.h"
