@@ -45,5 +45,16 @@ std::string replaceRedundantOperators(const std::string formula){
 }
 
 std::string removeMultipleNegations(const std::string& formula){
-
+    std::string result = formula;
+    for(unsigned int pos=0; pos<result.length(); pos++){
+        pos=findNearestNegation(result, pos);
+        if (pos==-1) return result;
+        for(unsigned int negationCount=1; pos+1<result.length(); negationCount++){
+            pos++;
+            if(result[pos]==NOT){
+                result.erase(pos-1,2);
+                pos=0;
+            } else break;
+        }
+    }
 }

@@ -1,0 +1,118 @@
+{
+    "extension": "linecount",
+    "version": "0.1.7",
+    "workspace": "/home/marcin/Documents/Negation-normal-form",
+    "linecount": [
+        {
+            "version": "0.1.7",
+            "counttime": "2019-06-12 08:56:23",
+            "filesum": 16,
+            "codesum": 194,
+            "commentsum": 26,
+            "blanksum": 51,
+            "filelist": [
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": ".gitignore"
+                },
+                {
+                    "filename": "bin/negation-normal-form",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "bin/src/Finders.cpp.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "bin/src/main.cpp.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "bin/src/NegationNormalForm.cpp.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "bin/src/Tools.cpp.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 11,
+                    "code": 11,
+                    "comment": 10,
+                    "filename": "include/Finders.h"
+                },
+                {
+                    "blank": 5,
+                    "code": 7,
+                    "comment": 5,
+                    "filename": "include/NegationNormalForm.h"
+                },
+                {
+                    "blank": 2,
+                    "code": 10,
+                    "comment": 3,
+                    "filename": "include/operators.h"
+                },
+                {
+                    "blank": 3,
+                    "code": 3,
+                    "comment": 2,
+                    "filename": "include/Tools.h"
+                },
+                {
+                    "blank": 9,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "Makefile"
+                },
+                {
+                    "blank": 1,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 9,
+                    "code": 79,
+                    "comment": 5,
+                    "filename": "src/Finders.cpp"
+                },
+                {
+                    "blank": 1,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "src/main.cpp"
+                },
+                {
+                    "blank": 7,
+                    "code": 42,
+                    "comment": 1,
+                    "filename": "src/NegationNormalForm.cpp"
+                },
+                {
+                    "blank": 3,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src/Tools.cpp"
+                }
+            ]
+        }
+    ]
+}

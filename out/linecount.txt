@@ -1,0 +1,28 @@
+===============================================================================
+EXTENSION NAME : linecount
+EXTENSION VERSION : 0.1.7
+-------------------------------------------------------------------------------
+count time : 2019-06-12 08:56:23
+count workspace : /home/marcin/Documents/Negation-normal-form
+total files : 16
+total code lines : 194
+total comment lines : 26
+total blank lines : 51
+
+.gitignore, code is 2, comment is 0, blank is 0.
+bin/negation-normal-form, it is a binary file.
+bin/src/Finders.cpp.o, it is a binary file.
+bin/src/main.cpp.o, it is a binary file.
+bin/src/NegationNormalForm.cpp.o, it is a binary file.
+bin/src/Tools.cpp.o, it is a binary file.
+include/Finders.h, code is 11, comment is 10, blank is 11.
+include/NegationNormalForm.h, code is 7, comment is 5, blank is 5.
+include/operators.h, code is 10, comment is 3, blank is 2.
+include/Tools.h, code is 3, comment is 2, blank is 3.
+Makefile, code is 16, comment is 0, blank is 9.
+README.md, code is 3, comment is 0, blank is 1.
+src/Finders.cpp, code is 79, comment is 5, blank is 9.
+src/main.cpp, code is 10, comment is 0, blank is 1.
+src/NegationNormalForm.cpp, code is 42, comment is 1, blank is 7.
+src/Tools.cpp, code is 11, comment is 0, blank is 3.
+===============================================================================
