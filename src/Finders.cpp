@@ -48,11 +48,11 @@ bool isalpha_quantifiers(const char& ch){
 }
 
 bool isPredicate(const std::string& formula, const unsigned int& pos){
-    return isalpha_quantifiers(formula[pos+1]);
+    return isalpha_quantifiers(formula[pos-1]);
 }
 
 unsigned int findPredecessor(const std::string& formula, const unsigned int& pos){
-    unsigned int result=-1;
+    int result;
     if(isalpha_quantifiers(formula[pos-1]))
         return pos-1;
     if(formula[pos-1]==P_CLOSE) {
@@ -65,6 +65,18 @@ unsigned int findPredecessor(const std::string& formula, const unsigned int& pos
 
 unsigned int findSuccessor(const std::string& formula, const unsigned int& pos){
     return pos+1;
+}
+
+unsigned int findSuccessorEnd(const std::string& formula, const unsigned int& pos){
+    int result;
+    if(isalpha_quantifiers(formula[pos+1]))
+        return pos+1;
+    if(formula[pos+1]==P_OPEN) {
+        result = findBracketCompletion(formula, pos+1);
+        if(result>0 && isalpha_quantifiers(formula[result+1]))
+            return result+1;
+    }
+    return result;
 }
 
 int findReduntantOperator(const std::string& formula, const unsigned int& pos){
