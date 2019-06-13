@@ -13,7 +13,7 @@ int findBracketCompletion(const std::string& formula, const unsigned int& pos){
     unsigned int count=1; // Counts of the 
     char bracket=formula[pos];
     if(bracket==P_CLOSE){ // If parenthesis on a given pos is a closed parenthesis, look for matching open parenthesis.
-        for(unsigned int ptr=pos-1; ptr>=0; ptr--){
+        for(int ptr=pos-1; ptr>=0; ptr--){
             if(formula[ptr]==P_OPEN && count==1) 
                 return ptr;
             else if(formula[ptr]==P_CLOSE)
@@ -52,7 +52,7 @@ bool isPredicate(const std::string& formula, const unsigned int& pos){
 }
 
 unsigned int findPredecessor(const std::string& formula, const unsigned int& pos){
-    int result;
+	int result = 0;
     if(isalpha_quantifiers(formula[pos-1]))
         return pos-1;
     if(formula[pos-1]==P_CLOSE) {
@@ -68,7 +68,7 @@ unsigned int findSuccessor(const std::string& formula, const unsigned int& pos){
 }
 
 unsigned int findSuccessorEnd(const std::string& formula, const unsigned int& pos){
-    int result;
+	int result = 0;
     if(isalpha_quantifiers(formula[pos+1]))
         return pos+1;
     if(formula[pos+1]==P_OPEN) {

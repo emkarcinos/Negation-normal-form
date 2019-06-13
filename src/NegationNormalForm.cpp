@@ -5,7 +5,7 @@
 #include <sstream>
 
 std::string applyDeMorgan(const std::string& formula, const unsigned int& pos){
-
+	return "";
 }
 
 std::string replaceImplication(const std::string& formula, const unsigned int& implicationPos){
