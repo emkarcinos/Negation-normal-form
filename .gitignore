@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs
+/Debug
+/Negation-normal-form.sln
+/Negation-normal-form.vcxproj
+/Negation-normal-form.vcxproj.filters
+/Negation-normal-form.vcxproj.user
