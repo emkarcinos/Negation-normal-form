@@ -15,3 +15,6 @@ std::string applyDeMorgan(const std::string& formula, const unsigned int& pos=0)
 
 /* Returns a formula with removed multiplicated negations */
 std::string removeMultipleNegations(const std::string& formula);
+
+/* Return a formula brought to Negation Normal Form */
+std::string bringToNNF(const std::string& formula);

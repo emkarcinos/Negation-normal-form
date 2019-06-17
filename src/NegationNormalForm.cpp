@@ -91,3 +91,12 @@ std::string removeMultipleNegations(const std::string& formula){
     }
 	return result;
 }
+
+std::string bringToNNF(const std::string& formula) {
+	std::string result = formula;
+	result = replaceRedundantOperators(result);
+	result = removeMultipleNegations(result);
+	result = applyDeMorgan(result);
+	result = removeMultipleNegations(result);
+	return result;
+}

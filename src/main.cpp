@@ -4,9 +4,9 @@
 #include <iostream>
 
 int main(){
-    std::string line="!E(p^q)";
+    std::string line="(pvq)>r";
     std::cout << "Formula to bring: " << line << std::endl;
-	line = applyDeMorgan(line);
+	line = bringToNNF(line);
     std::cout << "Formula after: " << line;
     std::cin.get();
     return 0;
