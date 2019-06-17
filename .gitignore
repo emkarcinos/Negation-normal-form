@@ -8,3 +8,8 @@
 /Negation-normal-form.vcxproj
 /Negation-normal-form.vcxproj.filters
 /Negation-normal-form.vcxproj.user
+/Release/Negation.4228F453.tlog
+*.obj
+/Release/Negation-normal-form.log
+/Release/Negation-normal-form.pdb
+/Release/vc142.pdb
