@@ -1,0 +1,103 @@
+﻿\documentclass{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+
+\title{Negacyjna postać normalna}
+\author{Marcin Kostrzewski, 444409}
+\date{17 Czerwca, 2019r}
+
+\begin{document}
+
+\maketitle
+
+\section{Wprowadzenie}
+Ten program sprowadza formułę logiki w dowolnej postaci do negacyjnej postaci normalnej. Został napisany w języku \textbf{C++} i bazuje na różnych algorytmach i operacjach na stringach, czyli program bezpośrednio sprawdza i modyfikuje surowy tekst z formułą. 
+
+
+\section{Negacyjna postać normalna}
+\textbf{Negacyjna postać normalna} formuły logicznej \textit{(ang. negation normal form)}, to taka postać, w której negacja ($\neg$) stoi tylko przed zmiennymi, oraz jedynymi operatorami w formule jest koniunkcja ($\wedge$) i alternatywa ($\vee$).
+
+\section{Dlaczego C++?}
+Wybór tego języka uzasadniam tym, że jest jest mi on najbardziej znajomy. C++ znakomicie nadaje się do matematyki i w dodaku działa szybciej niż inne języki. Początkowo program miał zostać napisany w C, ale implementacja stringów w C++ zdecydowanie ułatwiała manipulację w przypadku mojego algorytmu. Standardowa biblioteka również dostarcza wiele przydatnych narzędzi, które również usprawniają pracę nad kodem oraz sprawiają, że jest on bardziej czytelny.
+
+
+
+\pagebreak
+\section{Algorytm}
+Program działa w oparciu o manipulacje na surowym tekście, którym jest formuła logiczna. Program nie będzie działał poprawnie, jeżeli formuła, którą wpiszemy będzie niepoprawna (np. jeżeli nawiasy nie będą się poprawnie domykać). Program ma również pewną limitację, mianowicie musimy explicite wziąć w nawiasy operacje, które mają wyższą moc wiązania, czyli:
+    \[p \vee q \Rightarrow r\]
+    \qquad Musimy zapisać jako:
+    \[(p \vee q) \Rightarrow r\]
+\par Skracamy również zapisywanie predykatów do zapisania tylko jego symbolu, bez nawiasu i zmiennej. Zdecydowałem się na to uproszczenie, gdyż zdecydowanie ułatwia to pracę z algorytmem i przede wszystkim nie ma konieczności używania pełnego zapisu, bowiem sprowadzanie formuły logicznej do negacyjnej postaci normalej nie wpływa w żaden sposób na zmienne wolne, itp. \newline
+Zatem formułę:
+    \[\forall _{x\in X} (S(x) \wedge Q(x))\]
+    \qquad Musimy zapisać jako:
+    \[\forall(S \wedge Q)\]
+\par Algorytm można podzielić na trzy główne funkcje:
+
+\begin{itemize}
+    \item Zredukowanie operatorów
+    \item Usunięcie podwójnych negacji
+    \item Zastosowanie praw DeMorgana
+\end{itemize}
+
+\par \textbf{Zredukowanie operatorów} polega na wyszukiwaniu operatora do zamiany ($\Leftarrow$, $\Leftrightarrow$) i zastosowaniu odpowiedniego prawa logiki aby je przedstawić za pomocą ($\wedge$,$\vee$), czyli:
+    \[p \Rightarrow q \Leftrightarrow \neg p \vee q\]
+    \[p \Leftrightarrow q \Leftrightarrow (\neg p \vee q) \wedge (\neg p \vee q)\]
+Algorytm wyszukuje liniowo indeks operatora do zamiany i wywołuje procedurę zamiany. Operacje zamiany zamieniają fragment formuły i na inny fragment, gdzie operator został już przekształcony. Następnie algorytm zapętla się, aż wszystkie operatory zostaną zamienione.
+\newline
+\par Złożoność:
+    \[T(n,k)=\Theta(n*k)\]
+\begin{center}
+n - długość formuły, k - ilość operatorów do zamiany
+\end{center}
+
+\newline
+\par \textbf{Usunięcie podwójnych negacji} wyszukuje indeks najbliższej negacji i sprawdza, czy następny znak w tekście jest również negacją. Jeżeli tak, to jest ona usuwana z tekstu i algorytm zapętla się.
+\newline
+\par Złożoność:
+    \[T(n)=O(n)\]
+\begin{center}
+n - długość formuły
+\end{center}
+
+\newline
+\par \textbf{Zastosowanie praw DeMorgana} rozpoczyna od znalezienia indeksu najbliższej negacji. Następnie sprawdza, czy negacja jest przed nawiasem lub kwantyfikatorem. Jeżeli tak, to na fragmencie formuły stosuje prawa:
+    \[\neg\forall _{x\in X} S(x) \Leftrightarrow \exists _{x\in X} \neg S(x)\]
+    \[\neg\exists _{x\in X} S(x) \Leftrightarrow \forall _{x\in X} \neg S(x)\]
+    \[\neg (p \wedge q) \Leftrightarrow (\neg p \vee \neg q)\]
+    \[\neg (p \vee q) \Leftrightarrow (\neg p \wedge \neg q)\]
+\newline
+\par Złożoność:
+    \[T(n,k)=O(k*n^2)\]
+\begin{center}
+n - długość formuły, k - ilość negacji
+\end{center}
+
+\section{Wejście / Wyjście}
+Formułe do programu wpisujemy w jednej linii, nie używając spacji. Koniec formuły oznaczamy klawiszem ENTER. \newline
+Pamiętamy o wspomnianych wcześniej zasadach, czyli pozbywamy się zmiennych z predykatów i spod kwantyfikatorów i zapisujemy dodatkowe nawiasy. \newline
+Stosujemy również określony sposób zapisywania operatorów:
+\begin{itemize}
+    \item $\neg p$ zaposujemy jako $!$ p
+    \item $ p \wedge q $ zapsujemy jako p \^{} q
+    \item $ p \vee q $ zapisujemy jako pvq
+    \item $ p \Rightarrow q $ zapisujemy jako p\textgreater q
+    \item $ p \Leftrightarrow q $ zapisujemy jako p=q
+    \item $ \forall _{x\in X} S(x) $ zapisujemy jako VS
+    \item $ \exists _{x\in X} S(x) $ zapisujemy jako ES
+\end{itemize}
+\pagebreak
+Przykładowe wejście:
+    \[\neg\exists _{x\in X} (P(x) \vee Q(x) \Rightarrow P(x))\]
+\qquad Zapiszemy jako:
+\begin{center}
+    $!E((PvQ)>P)$
+\end{center}
+Na wyjściu otrzymamy:
+\begin{center}
+    $V((PvQ)$ \^{} $!P)$
+\end{center}
+Odczytujemy jako:
+    \[\forall _{x\in X} (P(x) \vee Q(x) \Rightarrow \neg P(x)) \]
+\end{document}
