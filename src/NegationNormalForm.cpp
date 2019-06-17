@@ -25,6 +25,7 @@ std::string applyDeMorgan(const std::string& formula, const unsigned int& pos){
 				int helpPtr = ptr + 3;
 				// Looks for an operator
 				while (helpPtr != result.length()) {
+					if (result[helpPtr] == P_OPEN) helpPtr = findBracketCompletion(result, helpPtr);
 					if (result[helpPtr] == OR || result[helpPtr] == AND)
 						break;
 					helpPtr++;
