@@ -11,7 +11,7 @@ std::string replaceEquality(const std::string& formula, const unsigned int& equa
 std::string replaceRedundantOperators(const std::string formula);
 
 /* Return a formula with applied DeMorgan's law on a formula after a given position */
-std::string applyDeMorgan(const std::string& formula, const unsigned int& pos);
+std::string applyDeMorgan(const std::string& formula, const unsigned int& pos=0);
 
 /* Returns a formula with removed multiplicated negations */
 std::string removeMultipleNegations(const std::string& formula);
