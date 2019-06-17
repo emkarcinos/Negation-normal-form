@@ -35,6 +35,7 @@ std::string applyDeMorgan(const std::string& formula, const unsigned int& pos){
 				result.erase(ptr, 1);
 			}
 		}
+		result = removeMultipleNegations(result);
 		ptr++;
 	}
 	return result;
@@ -85,7 +86,8 @@ std::string removeMultipleNegations(const std::string& formula){
             pos++;
             if(result[pos]==NOT){
                 result.erase(pos-1,2);
-                pos=0;
+                pos--;
+				negationCount = 0;
             } else break;
         }
     }
@@ -97,6 +99,5 @@ std::string bringToNNF(const std::string& formula) {
 	result = replaceRedundantOperators(result);
 	result = removeMultipleNegations(result);
 	result = applyDeMorgan(result);
-	result = removeMultipleNegations(result);
 	return result;
 }
