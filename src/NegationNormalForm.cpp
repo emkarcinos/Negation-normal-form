@@ -5,7 +5,39 @@
 #include <sstream>
 
 std::string applyDeMorgan(const std::string& formula, const unsigned int& pos){
-	return "";
+	std::string result = formula;
+	int ptr = pos;
+	while (ptr != result.length()) {
+		ptr = findNearestNegation(result, ptr);
+		if (ptr == -1) return result;
+		if (isBeforeBracketOrQuantifier(result, ptr)) {
+			// Swaps quantifiers
+			if (result[ptr + 1] == Q_EXIST) {
+				result[ptr + 1] = Q_UNI;
+				result.insert(ptr + 2, "!");
+				result.erase(ptr, 1);
+			} else if (result[ptr + 1] == Q_UNI) {
+				result[ptr + 1] = Q_EXIST;
+				result.insert(ptr + 2, "!");
+				result.erase(ptr, 1);
+			} else if (result[ptr + 1] == P_OPEN) {
+				result.insert(ptr + 2, "!");
+				int helpPtr = ptr + 3;
+				// Looks for an operator
+				while (helpPtr != result.length()) {
+					if (result[helpPtr] == OR || result[helpPtr] == AND)
+						break;
+					helpPtr++;
+				}
+				result.insert(helpPtr + 1, "!");
+				if (result[helpPtr] == OR) result[helpPtr] = AND;
+				else result[helpPtr] = OR;
+				result.erase(ptr, 1);
+			}
+		}
+		ptr++;
+	}
+	return result;
 }
 
 std::string replaceImplication(const std::string& formula, const unsigned int& implicationPos){
@@ -57,4 +89,5 @@ std::string removeMultipleNegations(const std::string& formula){
             } else break;
         }
     }
+	return result;
 }
